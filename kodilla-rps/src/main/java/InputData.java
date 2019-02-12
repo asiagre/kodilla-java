@@ -2,20 +2,31 @@ import java.util.Scanner;
 
 public class InputData {
 
-    Scanner scan = new Scanner();
+    private static Scanner scan = new Scanner(System.in);
+    private static String move;
 
     public static String getName() {
         String name = scan.nextLine();
         return name;
     }
 
-    public static int getAmountOfWins() {
-        int amountOfWins = scan.nextInt();
-        return amountOfWins;
+    public static int getAmountOfRequiredWins() {
+        int amountOfRequiredWins = scan.nextInt();
+        return amountOfRequiredWins;
     }
 
-    public static String getMove() {
-        String move = scan.nextLine();
+    public static void makeAMove() {
+        move = scan.nextLine();
+    }
+
+    public static String getAMove() {
         return move;
+    }
+
+    public static boolean getConfirmation() {
+        String confirmation = scan.nextLine();
+        if(confirmation.equalsIgnoreCase("y")) {
+            return true;
+        } else return false;
     }
 }

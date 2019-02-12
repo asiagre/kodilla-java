@@ -49,8 +49,8 @@ public class StatisticsForumTestSuite {
 
         //Then
         Assert.assertEquals(0, numberOfPosts);
-        Assert.assertEquals(0, (int) averagePostsForUser);
-        Assert.assertEquals(0, (int) averageCommentsForPost);
+        Assert.assertEquals(0, averagePostsForUser, 0);
+        Assert.assertEquals(0, averageCommentsForPost, 0);
     }
 
     @Test
@@ -75,8 +75,8 @@ public class StatisticsForumTestSuite {
 
         //Then
         Assert.assertEquals(1000, numberOfPosts);
-        Assert.assertEquals(500, (int) averagePostsForUser);
-        Assert.assertEquals(2, (int) averageCommentsForPost);
+        Assert.assertEquals(500, averagePostsForUser, 0);
+        Assert.assertEquals(2, averageCommentsForPost, 0);
     }
 
     @Test
@@ -101,8 +101,8 @@ public class StatisticsForumTestSuite {
 
         //Then
         Assert.assertEquals(0, numberOfComments);
-        Assert.assertEquals(0, (int) averageCommentsForUser);
-        Assert.assertEquals(0, (int) averageCommentsForPost);
+        Assert.assertEquals(0, averageCommentsForUser, 0);
+        Assert.assertEquals(0, averageCommentsForPost, 0);
     }
 
     @Test
@@ -130,9 +130,9 @@ public class StatisticsForumTestSuite {
         //Then
         Assert.assertEquals(100, numberOfPosts);
         Assert.assertEquals(10, numberOfComments);
-        Assert.assertEquals(50, (int) averagePostsForUser);
-        Assert.assertEquals(5, (int) averageCommentsForUser);
-        Assert.assertEquals(0, (int) averageCommentsForPost);
+        Assert.assertEquals(50, averagePostsForUser, 0);
+        Assert.assertEquals(5, averageCommentsForUser, 0);
+        Assert.assertEquals(0, averageCommentsForPost, 0);
     }
 
     @Test
@@ -160,9 +160,9 @@ public class StatisticsForumTestSuite {
         //Then
         Assert.assertEquals(100, numberOfPosts);
         Assert.assertEquals(1000, numberOfComments);
-        Assert.assertEquals(50, (int) averagePostsForUser);
-        Assert.assertEquals(500, (int) averageCommentsForUser);
-        Assert.assertEquals(10, (int) averageCommentsForPost);
+        Assert.assertEquals(50, averagePostsForUser, 0);
+        Assert.assertEquals(500, averageCommentsForUser, 0);
+        Assert.assertEquals(10, averageCommentsForPost, 0);
     }
 
     @Test
@@ -189,8 +189,8 @@ public class StatisticsForumTestSuite {
         Assert.assertEquals(0, numberOfUsers);
         Assert.assertEquals(100, numberOfPosts);
         Assert.assertEquals(10, numberOfComments);
-        Assert.assertEquals(0, (int) averagePostsForUser);
-        Assert.assertEquals(0, (int) averageCommentsForUser);
+        Assert.assertEquals(0, averagePostsForUser, 0);
+        Assert.assertEquals(0, averageCommentsForUser, 0);
     }
 
     @Test
@@ -219,7 +219,7 @@ public class StatisticsForumTestSuite {
         Assert.assertEquals(2, numberOfUsers);
         Assert.assertEquals(100, numberOfPosts);
         Assert.assertEquals(10, numberOfComments);
-        Assert.assertEquals(50, (int) averagePostsForUser);
-        Assert.assertEquals(5, (int) averageCommentsForUser);
+        Assert.assertEquals(50, averagePostsForUser, 0);
+        Assert.assertEquals(5, averageCommentsForUser, 0);
     }
 }

@@ -1,19 +1,14 @@
 import java.util.Random;
 
 public class Computer extends Player{
+    Random generator = new Random();
     private String name = "Computer";
 
     public Computer() {
         super();
     }
 
-    public String getName() {
-        return "Computer";
-    }
-
-    public int move() {
-        Random generator = new Random();
-
+    public int getMove() {
         return generator.nextInt(3);
     }
 }
