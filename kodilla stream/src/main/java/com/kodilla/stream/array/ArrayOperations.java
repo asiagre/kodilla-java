@@ -1,4 +1,4 @@
-package array;
+package com.kodilla.stream.array;
 
 import java.util.OptionalDouble;
 import java.util.stream.IntStream;
