@@ -1,17 +1,11 @@
+package com.kodilla.rps;
+
 public abstract class Player {
 
-    String name;
-
-    int score = 0;
-
-    public Player() {};
+    private final String name;
+    private int score = 0;
 
     public Player(String name) {
-
-        this.name = name;
-    }
-
-    public void setName(String name) {
 
         this.name = name;
     }
@@ -26,8 +20,11 @@ public abstract class Player {
     }
 
     public int addPoint() {
+        return this.score++;
+    }
 
-        return score++;
+    public void resetScore() {
+        score = 0;
     }
 
     public abstract int getMove();
