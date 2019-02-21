@@ -35,10 +35,14 @@ public class GameProcess {
         UserInterface.mainMenu();
         if(player1 instanceof User) {
             InputData.establishedAMove();
+        } else if(player1 instanceof Computer) {
+            ((Computer) player1).establishedMove();
         }
         player1Move = player1.getMove();
         if(player2 instanceof User) {
             InputData.establishedAMove();
+        } else if(player2 instanceof Computer) {
+            ((Computer) player2).establishedMove();
         }
         player2Move = player2.getMove();
         int result = getResult(player1Move, player2Move);

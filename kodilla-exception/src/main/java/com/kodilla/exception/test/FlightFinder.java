@@ -14,27 +14,14 @@ public class FlightFinder {
         flightAvalaible.put("Warsaw", true);
         flightAvalaible.put("Paris", false);
 
-        for(Map.Entry<String, Boolean> entry : flightAvalaible.entrySet()) {
-            if(entry.getKey().equals(flight.getArrivalAirport())) {
-                count1++;
-                if(entry.getValue()) {
-                    System.out.println(flight.getArrivalAirport() + " - you can fly to this airport.");
-                } else {
-                    System.out.println(flight.getArrivalAirport() + " - you cannot fly to this airport.");
-                }
+        if(flightAvalaible.get(flight.getDepartureAirport()) == null || flightAvalaible.get(flight.getArrivalAirport()) == null) {
+            throw new RouteNotFoundException("Error: wrong city.");
+        } else {
+            if(flightAvalaible.get(flight.getArrivalAirport()) && flightAvalaible.get(flight.getDepartureAirport())) {
+                System.out.println("This flight is in our offer.");
+            } else {
+                System.out.println("We do not offer this flight.");
             }
-            if(entry.getKey().equals(flight.getDepartureAirport())) {
-                count2++;
-                if(entry.getValue()) {
-                    System.out.println(flight.getDepartureAirport() + " - you can fly from this airport.");
-                } else {
-                    System.out.println(flight.getDepartureAirport() + " - you cannot fly from this airport.");
-                }
-            }
-        }
-
-        if(count1 == 0 || count2 == 0) {
-            throw new RouteNotFoundException("We do not have at least one of the entered destination in our offer.");
         }
     }
 }
