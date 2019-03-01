@@ -1,7 +1,5 @@
 package com.kodilla.rps;
 
-import com.kodilla.rps.Player;
-
 public class User extends Player {
     private int move;
 
@@ -9,8 +7,11 @@ public class User extends Player {
         super(name);
     }
 
+    public void theMove() {
+        move = InputData.getMove();
+    }
 
     public int getMove() {
-        return InputData.getMove();
+        return move;
     }
 }

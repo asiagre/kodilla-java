@@ -4,6 +4,7 @@ public abstract class Player {
 
     private final String name;
     private int score = 0;
+    private int move;
 
     public Player(String name) {
 
@@ -19,13 +20,19 @@ public abstract class Player {
         return score;
     }
 
-    public int addPoint() {
-        return this.score++;
-    }
-
     public void resetScore() {
         score = 0;
     }
 
+    public int addPoint() {
+        return this.score++;
+    }
+
+    public int endGame() {
+        return InputData.endingGame();
+    }
+
     public abstract int getMove();
+
+    public abstract void theMove();
 }

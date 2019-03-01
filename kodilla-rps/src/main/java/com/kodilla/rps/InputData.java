@@ -30,31 +30,57 @@ public class InputData {
         return amountOfRequiredWins;
     }
 
-    public static void establishedAMove() {
+    public static int getMove() {
         boolean isCorrect = false;
         do {
             String move = scan.nextLine();
-            if(move != null && !move.isEmpty() && (move.equals("1") || move.equals("2") || move.equals("3"))) {
+            if(move != null && !move.isEmpty() && (move.equals("1") || move.equals("2") || move.equals("3") ||
+                    move.equalsIgnoreCase("n") || move.equalsIgnoreCase("x"))) {
                 isCorrect = true;
-                result = Integer.parseInt(move) - 1;
+                if(move.equalsIgnoreCase("n")) {
+                    result = 4;
+                } else if(move.equalsIgnoreCase("x")) {
+                    result = 5;
+                } else {
+                    result = Integer.parseInt(move) - 1;
+                }
             }
         } while(!isCorrect);
 
-//        } else if (move.equalsIgnoreCase("n")) {
-//            result = 4;
-//        } else if(move.equalsIgnoreCase("x")){
-//            result = 5;
-//        } else  {
-//            result = 6;
-    }
-
-    public static int getMove() {
         return result;
     }
 
     public static boolean getConfirmation() {
-        String confirmation = scan.nextLine();
-        return confirmation.equalsIgnoreCase("y");
+        boolean isCorrect = false;
+        boolean answer = false;
+        do {
+            String confirmation = scan.nextLine();
+            if(confirmation.equalsIgnoreCase("y")) {
+                answer = true;
+                isCorrect = true;
+            } else if(confirmation.equalsIgnoreCase("n")) {
+                isCorrect = true;
+            }
+        } while(!isCorrect);
+
+        return answer;
+    }
+
+    public static int endingGame() {
+        boolean isCorrect = false;
+        do {
+            String move = scan.nextLine();
+            if(move != null && !move.isEmpty() && (move.equalsIgnoreCase("n") || move.equalsIgnoreCase("x"))) {
+                isCorrect = true;
+                if(move.equalsIgnoreCase("n")) {
+                    result = 4;
+                } else if(move.equalsIgnoreCase("x")) {
+                    result = 5;
+                }
+            }
+        } while(!isCorrect);
+
+        return result;
     }
 }
 

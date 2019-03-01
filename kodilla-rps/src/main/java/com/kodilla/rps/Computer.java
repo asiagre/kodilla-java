@@ -10,7 +10,7 @@ public class Computer extends Player {
         super(name);
     }
 
-    public void establishedMove() {
+    public void theMove() {
         move = generator.nextInt(3);
     }
 

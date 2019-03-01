@@ -1,17 +1,17 @@
 package com.kodilla.rps;
 
-import com.kodilla.rps.Player;
-
 public class GameProcess {
 
     private static final int[][] TABLE = {
-            { 0, 1, -1},
-            { -1, 0, 1},
-            { 1, -1, 0}
+            {0, 1, -1},
+            {-1, 0, 1},
+            {1, -1, 0}
     };
     private final Player player1;
     private final Player player2;
     private int amountOfRequiredWins;
+    private boolean end = false;
+    private boolean endOfGame = false;
 
 
     public GameProcess(Player player1, Player player2, int amountOfRequiredWins) {
@@ -21,102 +21,76 @@ public class GameProcess {
     }
 
     public void game() {
-        boolean end = false;
-        while(!end) {
-            gameTour();
-            if(player1.getScore() >= amountOfRequiredWins || player2.getScore() >= amountOfRequiredWins) {
-                end = true;
+        while(!endOfGame) {
+            while (!end) {
+                gameTour();
+                if (player1.getScore() >= amountOfRequiredWins || player2.getScore() >= amountOfRequiredWins) {
+                    end = true;
+                }
             }
+            if (player1.getScore() > player2.getScore()) {
+                UserInterface.wins(player1);
+            } else {
+                UserInterface.wins(player2);
+            }
+            endingGame();
         }
     }
 
     public void gameTour() {
-        int player1Move, player2Move;
+        int player1Move, player2Move, result;
         UserInterface.mainMenu();
-        if(player1 instanceof User) {
-            InputData.establishedAMove();
-        } else if(player1 instanceof Computer) {
-            ((Computer) player1).establishedMove();
-        }
+        player1.theMove();
+        UserInterface.mainMenu();
+        player2.theMove();
+
         player1Move = player1.getMove();
-        if(player2 instanceof User) {
-            InputData.establishedAMove();
-        } else if(player2 instanceof Computer) {
-            ((Computer) player2).establishedMove();
+        if (player1Move == 4) {
+            newGameWhilePlaying();
+        } else if (player1Move == 5) {
+            quitGameWhilePlaying();
         }
+
         player2Move = player2.getMove();
-        int result = getResult(player1Move, player2Move);
-        addPlayersPoints(result);
+        if (player2Move == 4) {
+            newGameWhilePlaying();
+        } else if (player2Move == 5) {
+            quitGameWhilePlaying();
+        }
 
-
-//        if(pla == 5) {
-//            UserInterface.confirmExitOfGame();
-//            boolean confirmation = InputData.getConfirmation();
-//            if(!confirmation) {
-//                System.out.println("Continue the game");
-//                gameTour(player1, player2);
-//            } else {
-//                return;
-//            }
-//        } else if(move == 4) {
-//            UserInterface.confirmNewGame();
-//            boolean confirmation = InputData.getConfirmation();
-//            if(!confirmation) {
-//                System.out.println("Continue the game");
-//                gameTour(player1, computer);
-//            } else {
-//                computer.resetScore();
-//                player1.resetScore();
-//                gameTour(player1, computer);
-//            }
-//        } else if(move == 1 || move == 2 || move == 3){
-//            int result = getResult(player1, player2);
-//            if(result == -1) {
-//                computer.addPoint();
-//                UserInterface.loosing(player1, computer);
-//            } else if(result == 0) {
-//                UserInterface.draw(player1, computer);
-//            } else if(result == 1) {
-//                player1.addPoint();
-//                UserInterface.winning(player1, computer);
-//            }
-//        } else {
-//            System.out.println("Wrong data. Try again.");
-//            gameTour(player1, computer);
-//        }
+        if (player1Move < 4 && player2Move < 4) {
+            result = getResult(player1Move, player2Move);
+            addPlayersPoints(result);
+        }
     }
 
-//    public static void endingGame(r) {
-//        UserInterface.endOfGame(player1, computer);
-//        InputData.makeAMove();
-//        int move = player1.getMove();
-//        if(move == 5) {
-//            UserInterface.confirmExitOfGame();
-//            boolean confirmation = InputData.getConfirmation();
-//            if(!confirmation) {
-//                endingGame(player1, computer);
-//            } else {
-//                return;
-//            }
-//        } else if(move == 4) {
-//            UserInterface.confirmNewGame();
-//            boolean confirmation = InputData.getConfirmation();
-//            if(!confirmation) {
-//                endingGame(player1, computer);
-//            } else {
-//                computer.resetScore();
-//                player1.resetScore();
-//                gameTour(player1, computer);
-//            }
-//        } else {
-//            System.out.println("Wrong data. Try again.");
-//            endingGame(player1, computer);
-//        }
-//    }
+    private void newGameWhilePlaying() {
+        UserInterface.confirmNewGame();
+        boolean confirmation = InputData.getConfirmation();
+        if (confirmation) {
+            player1.resetScore();
+            player2.resetScore();
+            game();
+        } else {
+            game();
+        }
+    }
 
-    public int getResult(int player1Move, int player2Move) {
+    private void quitGameWhilePlaying() {
+        UserInterface.confirmExitOfGame();
+        boolean confirmation = InputData.getConfirmation();
+        if (confirmation) {
+            end = true;
+            endOfGame = true;
+            game();
+        } else {
+            game();
+        }
+    }
 
-        int result = TABLE[player1Move][player2Move];
+    private int getResult(int player1Move, int player2Move) {
+
+        int result = TABLE[player2Move][player1Move];
 
         return result;
     }
@@ -124,13 +98,38 @@ public class GameProcess {
     private void addPlayersPoints(int result) {
         if(result == -1) {
             player2.addPoint();
-            UserInterface.winningPlayer2(player1, player2);
+            UserInterface.winningPlayer(player2, player1);
         } else if(result == 0) {
             UserInterface.draw(player1, player2);
         } else if(result == 1) {
             player1.addPoint();
-            UserInterface.winningPlayer1(player1, player2);
+            UserInterface.winningPlayer(player1, player2);
         }
     }
 
+    public void endingGame() {
+        UserInterface.endOfGame(player1, player2);
+        int move = player1.endGame();
+        if (move == 4) {
+            UserInterface.confirmNewGame();
+            boolean confirmation = InputData.getConfirmation();
+            if (confirmation) {
+                player1.resetScore();
+                player2.resetScore();
+                end = false;
+                game();
+            } else {
+                endOfGame = true;
+            }
+        }
+        if (move == 5) {
+            UserInterface.confirmExitOfGame();
+            boolean confirmation = InputData.getConfirmation();
+            if (confirmation) {
+                endOfGame = true;
+            } else {
+                endingGame();
+            }
+        }
+    }
 }

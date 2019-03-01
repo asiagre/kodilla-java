@@ -3,7 +3,7 @@ package com.kodilla.rps;
 public class UserInterface {
 
     public static void getNumbersOfPlayers() {
-        System.out.println("How many players?");
+        System.out.println("How many players? (0-2)");
     }
 
     public static void getPlayerName() {
@@ -29,51 +29,40 @@ public class UserInterface {
     }
 
     public static void chosenElementByUser(Player player1, Player player2) {
-        int player1Move = player1.getMove();
-        int player2Move = player2.getMove();
-        System.out.print(player1.getName() + " has chosen ");
-        if(player1Move == 0) {
-            System.out.println("rock.");
-        } else if(player1Move == 1) {
-            System.out.println("paper.");
-        } else if(player1Move == 2) {
-            System.out.println("scissors.");
-        }
+        chosenItem(player1);
+        chosenItem(player2);
+    }
 
-        System.out.print(player2.getName() + " has chosen ");
-        if(player2Move == 0) {
+    private static void chosenItem(Player player) {
+        int playerMove = player.getMove();
+        System.out.print(player.getName() + " has chosen ");
+        if(playerMove == 0) {
             System.out.println("rock.");
-        } else if(player2Move == 1) {
+        } else if(playerMove == 1) {
             System.out.println("paper.");
-        } else if(player2Move == 2) {
+        } else if(playerMove == 2) {
             System.out.println("scissors.");
         }
     }
 
-    public static void winningPlayer1(Player player1, Player player2) {
+    public static void winningPlayer(Player player1, Player player2) {
         chosenElementByUser(player1, player2);
-        System.out.println(player1.getName() + " wins");
-        System.out.println("Current result: " + player1.getName() + " : " + player2.getName() + " : " + player1.getScore() + " : " + player2.getScore() + ".");
-    }
-
-    public static void winningPlayer2(Player player1, Player player2) {
-        chosenElementByUser(player1, player2);
-        System.out.println(player2.getName() + " wins");
-        System.out.println("Current result: " + player1.getName() + " : " + player2.getName() + " : " + player1.getScore() + " : " + player2.getScore() + ".");
+        System.out.println();
+        System.out.println(player1.getName() + " wins.\n");
+        System.out.println("Current result: " + player1.getName() + " : " + player2.getName() + " : " + player1.getScore() + " : " + player2.getScore() + ".\n");
     }
 
     public static void draw(Player player1, Player player2) {
         chosenElementByUser(player1, player2);
+        System.out.println();
         System.out.println("It is a draw.");
-        System.out.println("Current result: " + player1.getName() + " : " + player2.getName() + " : " + player1.getScore() + " : " + player2.getScore() + ".");
+        System.out.println("Current result: " + player1.getName() + " : " + player2.getName() + " : " + player1.getScore() + " : " + player2.getScore() + ".\n");
     }
 
     public static void endOfGame(Player player1, Player player2) {
-        System.out.println("At the end the score is " + player1.getName() + ": " + player1.getScore() + ", " + player2.getName() + ":  " + player2.getScore() + ".");
-        System.out.println("\"x\" if you want to end game");
-        System.out.println("\"n\" if you want to restart the game");
-        System.out.println();
-        System.out.println("Choose your move: ");
+        System.out.println("\nAt the end the score is " + player1.getName() + ": " + player1.getScore() + ", " + player2.getName() + ":  " + player2.getScore() + ".");
+        System.out.println("\"x\" if you want to end game.");
+        System.out.println("\"n\" if you want to restart the game.");
     }
 
     public static void confirmExitOfGame() {
@@ -85,7 +74,7 @@ public class UserInterface {
     }
 
     public static void wins(Player player) {
-        System.out.println(player.getName() + " wins the game!");
+        System.out.println("\n" + player.getName() + " wins the game!\n");
     }
 
 }
