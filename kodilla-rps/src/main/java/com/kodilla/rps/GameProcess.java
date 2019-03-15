@@ -2,7 +2,7 @@ package com.kodilla.rps;
 
 public class GameProcess {
 
-    private static final int[][] TABLE = {
+    private static final int[][] RESULTTABLE = {
             {0, 1, -1},
             {-1, 0, 1},
             {1, -1, 0}
@@ -90,7 +90,7 @@ public class GameProcess {
 
     private int getResult(int player1Move, int player2Move) {
 
-        int result = TABLE[player2Move][player1Move];
+        int result = RESULTTABLE[player2Move][player1Move];
 
         return result;
     }

@@ -47,14 +47,12 @@ public class UserInterface {
 
     public static void winningPlayer(Player player1, Player player2) {
         chosenElementByUser(player1, player2);
-        System.out.println();
-        System.out.println(player1.getName() + " wins.\n");
+        System.out.println("\n" + player1.getName() + " wins.\n");
         System.out.println("Current result: " + player1.getName() + " : " + player2.getName() + " : " + player1.getScore() + " : " + player2.getScore() + ".\n");
     }
 
     public static void draw(Player player1, Player player2) {
         chosenElementByUser(player1, player2);
-        System.out.println();
         System.out.println("It is a draw.");
         System.out.println("Current result: " + player1.getName() + " : " + player2.getName() + " : " + player1.getScore() + " : " + player2.getScore() + ".\n");
     }

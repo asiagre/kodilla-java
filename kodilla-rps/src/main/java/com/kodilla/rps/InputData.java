@@ -21,7 +21,15 @@ public class InputData {
     }
 
     public static String getName() {
-        String name = scan.nextLine();
+        boolean isCorrect = false;
+        String name;
+        do {
+            name = scan.nextLine();
+            if(name != null && !name.isEmpty()) {
+                isCorrect = true;
+            }
+        } while(!isCorrect);
+
         return name;
     }
 
