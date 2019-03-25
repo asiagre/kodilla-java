@@ -1,4 +1,4 @@
-ROCK PAPER SCISSORS
+# Rock Paper Scissors
 
 This is a rock-paper-scissors console game written in Java. 
 It is build with Gradle.   
@@ -9,6 +9,22 @@ Available options:
 2 - user with user.  
 Also you can choose how many winnings are required to end the game.
 
+## Installation
+
+Download this repo to your computer (click green button "Clone or download"). Go to tic_tac_toe directory then entered:
+
+
+```bash
+javac RpsRunner.java
+```
+
+```bash
+java RpsRunner
+```
+
+ 
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
 
 
 
