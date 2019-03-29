@@ -5,14 +5,14 @@ public class Application {
 
         FlightsDatabase flightsDatabase = new FlightsDatabase();
 
-        FindFlight findFlight = new FindFlight();
+        FindFlight findFlight = new FindFlight(flightsDatabase);
 
         System.out.println("Flights from Cracow: ");
-        System.out.println(SetToStringConverter.convertSetToString(findFlight.findFlightFrom(flightsDatabase, "Cracow")));
+        System.out.println(SetToStringConverter.convertSetToString(findFlight.findFlightFrom("Cracow")));
         System.out.println("Flights to Warsaw: ");
-        System.out.println(SetToStringConverter.convertSetToString(findFlight.findFlightTo(flightsDatabase, "Warsaw")));
+        System.out.println(SetToStringConverter.convertSetToString(findFlight.findFlightTo("Warsaw")));
         System.out.println("Flights throw London: ");
-        System.out.println(SetToStringConverter.convertSetToString(findFlight.findFlightThrow(flightsDatabase, "London")));
+        System.out.println(SetToStringConverter.convertSetToString(findFlight.findFlightThrow("London")));
 
     }
 }
