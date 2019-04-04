@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class BoardConfig {
     @Autowired
     @Qualifier("toDoList")
-    TaskList taskList;
+    private TaskList taskList;
 
     @Bean(name = "toDoList")
     public TaskList getToDoList() {
