@@ -9,11 +9,11 @@ public class RpsRunner {
         UserInterface.getAmountOfWinsGames();
         int amountOfRequiredWins = InputData.getAmountOfRequiredWins();
 
-        if (numbersOfPlayers == 0) {
+        if(numbersOfPlayers == 0) {
             Player computer1 = new Computer("Computer1");
             Player computer2 = new Computer("Computer2");
             gameProcessor(computer1, computer2, amountOfRequiredWins);
-        } else if (numbersOfPlayers == 1) {
+        } else if(numbersOfPlayers == 1) {
             UserInterface.getPlayerName();
             String name = InputData.getName();
             Player user = new User(name);

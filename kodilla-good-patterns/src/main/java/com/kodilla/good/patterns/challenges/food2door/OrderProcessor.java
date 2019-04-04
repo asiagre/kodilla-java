@@ -14,7 +14,7 @@ public class OrderProcessor {
 
     public boolean isOrdered() {
         boolean isSuccessful = shop.process(product, productNumber);
-        if (isSuccessful) {
+        if(isSuccessful) {
             System.out.println("The ordering status: OK");
             return true;
         }

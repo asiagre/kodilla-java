@@ -27,20 +27,20 @@ public class CollectionTestSuite {
         System.out.println("Testing normal list.");
         //given
         List<Integer> normalList = new ArrayList<Integer>();
-        for (int i = 0; i < 10; i++) {
+        for(int i = 0; i < 10; i++) {
             normalList.add(i);
         }
         //when
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         List<Integer> result = oddNumbersExterminator.exterminate(normalList);
         List<Integer> testList = new ArrayList<Integer>();
-        for (int i = 0; i < normalList.size(); i++) {
-            if (normalList.get(i) % 2 == 0) {
+        for(int i = 0; i < normalList.size(); i++) {
+            if(normalList.get(i) % 2 == 0) {
                 testList.add(normalList.get(i));
             }
         }
         //then
-        for (int i = 0; i < result.size(); i++) {
+        for(int i = 0; i < result.size(); i++) {
             Assert.assertEquals(result.get(i), testList.get(i));
         }
     }

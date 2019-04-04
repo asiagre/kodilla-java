@@ -7,7 +7,7 @@ public class ThirdChallenge {
         FlightFinder flightFinder = new FlightFinder();
         try {
             flightFinder.findFlight(flight);
-        } catch (RouteNotFoundException e) {
+        } catch(RouteNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }

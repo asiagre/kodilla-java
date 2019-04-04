@@ -17,7 +17,6 @@ public class UserInterface {
     public static void getAmountOfWinsGames() {
         System.out.println("How many wins are required to end game?");
     }
-
     public static void mainMenu() {
         System.out.println("Press: ");
         System.out.println("1 for rock");
@@ -37,11 +36,11 @@ public class UserInterface {
     private static void chosenItem(Player player) {
         int playerMove = player.getMove();
         System.out.print(player.getName() + " has chosen ");
-        if (playerMove == 0) {
+        if(playerMove == 0) {
             System.out.println("rock.");
-        } else if (playerMove == 1) {
+        } else if(playerMove == 1) {
             System.out.println("paper.");
-        } else if (playerMove == 2) {
+        } else if(playerMove == 2) {
             System.out.println("scissors.");
         }
     }

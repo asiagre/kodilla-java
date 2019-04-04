@@ -6,7 +6,7 @@ public class SetToStringConverter {
 
     public static String convertSetToString(Set<Flight> flightSet) {
         String resultOfSearching = "";
-        for (Flight flight : flightSet) {
+        for(Flight flight : flightSet) {
             resultOfSearching += (flight + "\n");
         }
 

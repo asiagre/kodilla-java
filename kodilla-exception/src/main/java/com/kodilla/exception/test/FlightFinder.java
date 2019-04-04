@@ -14,10 +14,10 @@ public class FlightFinder {
         flightAvalaible.put("Warsaw", true);
         flightAvalaible.put("Paris", false);
 
-        if (flightAvalaible.get(flight.getDepartureAirport()) == null || flightAvalaible.get(flight.getArrivalAirport()) == null) {
+        if(flightAvalaible.get(flight.getDepartureAirport()) == null || flightAvalaible.get(flight.getArrivalAirport()) == null) {
             throw new RouteNotFoundException("Error: wrong city.");
         } else {
-            if (flightAvalaible.get(flight.getArrivalAirport()) && flightAvalaible.get(flight.getDepartureAirport())) {
+            if(flightAvalaible.get(flight.getArrivalAirport()) && flightAvalaible.get(flight.getDepartureAirport())) {
                 System.out.println("This flight is in our offer.");
             } else {
                 System.out.println("We do not offer this flight.");

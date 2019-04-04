@@ -21,7 +21,7 @@ public class GameProcess {
     }
 
     public void game() {
-        while (!endOfGame) {
+        while(!endOfGame) {
             while (!end) {
                 gameTour();
                 if (player1.getScore() >= amountOfRequiredWins || player2.getScore() >= amountOfRequiredWins) {
@@ -96,12 +96,12 @@ public class GameProcess {
     }
 
     private void addPlayersPoints(int result) {
-        if (result == -1) {
+        if(result == -1) {
             player2.addPoint();
             UserInterface.winningPlayer(player2, player1);
-        } else if (result == 0) {
+        } else if(result == 0) {
             UserInterface.draw(player1, player2);
-        } else if (result == 1) {
+        } else if(result == 1) {
             player1.addPoint();
             UserInterface.winningPlayer(player1, player2);
         }

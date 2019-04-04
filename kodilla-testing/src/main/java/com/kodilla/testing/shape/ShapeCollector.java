@@ -11,7 +11,7 @@ public class ShapeCollector {
     }
 
     public boolean removeFigure(Shape shape) {
-        if (figures.size() == 0) return false;
+        if(figures.size() == 0) return false;
         else {
             figures.remove(shape);
         }
@@ -24,7 +24,7 @@ public class ShapeCollector {
 
     public String showFigures() {
         String listOfFigures = "";
-        for (Shape figure : figures) {
+        for(Shape figure : figures) {
             listOfFigures += figure.toString() + "\n";
         }
         return listOfFigures;

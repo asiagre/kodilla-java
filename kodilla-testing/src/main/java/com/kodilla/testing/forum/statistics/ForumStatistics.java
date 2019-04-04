@@ -17,11 +17,11 @@ public class ForumStatistics {
         numberOfUsers = statistics.usersNames().size();
         numberOfPosts = statistics.postsCount();
         numberOfComments = statistics.commentsCount();
-        if (numberOfUsers != 0) {
+        if(numberOfUsers != 0) {
             averagePostsForUser = numberOfPosts / numberOfUsers;
             averageCommentsForUser = numberOfComments / numberOfUsers;
         }
-        if (numberOfPosts != 0) {
+        if(numberOfPosts != 0) {
             averageCommentsForPost = numberOfComments / numberOfPosts;
         }
     }
