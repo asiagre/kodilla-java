@@ -8,9 +8,9 @@ public class LoggerTestSuite {
     @Test
     public void testGetLastLog() {
         //Given
-        Logger.getInstance().log("This is a log.");
+        LoggerEnum.INSTANCE.log("This is a log.");
         //When
-        String log = Logger.getInstance().getLastLog();
+        String log = LoggerEnum.INSTANCE.getLastLog();
         //Then
         Assert.assertEquals("This is a log.", log);
     }
