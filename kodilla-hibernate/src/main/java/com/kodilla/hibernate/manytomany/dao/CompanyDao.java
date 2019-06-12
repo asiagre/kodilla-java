@@ -12,6 +12,13 @@ import java.util.List;
 @Repository
 public interface CompanyDao extends CrudRepository<Company, Integer> {
 
+    @Override
+    Company save(Company company);
+
+    void deleteById(int id);
+
     List<Company> retrieveCompaniesWhereThreeLetters(@Param("TEXT") String text);
+
+    List<Company> retrieveCompaniesWhereFragmentIs(@Param("NAME") String text);
 
 }

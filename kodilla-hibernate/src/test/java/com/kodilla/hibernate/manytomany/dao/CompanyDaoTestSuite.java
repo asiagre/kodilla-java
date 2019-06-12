@@ -124,4 +124,64 @@ public class CompanyDaoTestSuite {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void searchCompanyByFragment() {
+        //Given
+        Company softwareMachine = new Company("Software Machine");
+        Company dataMaesters = new Company("Data Maesters");
+        Company greyMatter = new Company("Grey Matter");
+
+        companyDao.save(softwareMachine);
+        int softwareMachineId = softwareMachine.getId();
+        companyDao.save(dataMaesters);
+        int dataMaestersId = dataMaesters.getId();
+        companyDao.save(greyMatter);
+        int greyMatterId = greyMatter.getId();
+
+        //When
+        List<Company> resultList = companyDao.retrieveCompaniesWhereFragmentIs("oftwa");
+
+        //Then
+        Assert.assertEquals(1, resultList.size());
+
+        //CleanUp
+        try {
+            companyDao.deleteById(softwareMachineId);
+            companyDao.deleteById(dataMaestersId);
+            companyDao.deleteById(greyMatterId);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void searchEmployeeByLastnameFragment() {
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
+        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+
+        employeeDao.save(johnSmith);
+        int johnSmithId = johnSmith.getId();
+        employeeDao.save(stephanieClarckson);
+        int stefanieClarcksonId = stephanieClarckson.getId();
+        employeeDao.save(lindaKovalsky);
+        int lindaKovalskyId = lindaKovalsky.getId();
+
+        //When
+        List<Employee> resultList = employeeDao.retrieveEmployeesWhereInLastnameIsFragment("arck");
+
+        //Then
+        Assert.assertEquals(1, resultList.size());
+
+        //CleanUp
+        try {
+            employeeDao.deleteById(johnSmithId);
+            employeeDao.deleteById(stefanieClarcksonId);
+            employeeDao.deleteById(lindaKovalskyId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

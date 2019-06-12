@@ -12,5 +12,12 @@ import java.util.List;
 @Repository
 public interface EmployeeDao extends CrudRepository<Employee, Integer> {
 
+    @Override
+    Employee save(Employee employee);
+
+    void deleteById(int id);
+
     List<Employee> retrieveEmployeeByLastname(@Param("LASTNAME") String lastname);
+
+    List<Employee> retrieveEmployeesWhereInLastnameIsFragment(@Param("LASTNAME") String test);
 }

@@ -11,6 +11,11 @@ import java.util.List;
                 " WHERE LEFT(COMPANY_NAME, 3) = :TEXT",
         resultClass = Company.class
 )
+@NamedNativeQuery(
+        name = "Company.retrieveCompaniesWhereFragmentIs",
+        query = "SELECT * FROM COMPANIES WHERE lower(COMPANY_NAME) LIKE CONCAT('%', :NAME, '%')",
+        resultClass = Company.class
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
