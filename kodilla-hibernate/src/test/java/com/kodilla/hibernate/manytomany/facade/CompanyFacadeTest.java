@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CompanyFacadeTest {
@@ -25,10 +27,11 @@ public class CompanyFacadeTest {
         companyFacade.addCompany(greyMatter);
 
         //When
-        Company company = companyFacade.findByFragment("oftwa").get();
+        List<Company> companies = companyFacade.findByFragment("oftwa");
 
         //Then
-        Assert.assertEquals("Software Machine", company.getName());
+        Assert.assertEquals("Software Machine", companies.get(0).getName());
+        Assert.assertEquals(1, companies.size());
 
         //CleanUp
         try {
@@ -50,12 +53,11 @@ public class CompanyFacadeTest {
         companyFacade.addCompany(dataMaesters);
         companyFacade.addCompany(greyMatter);
 
-        //When&Then
-        try {
-            Company company = companyFacade.findByFragment("ofwardh").get();
-        } catch (SearchingException e) {
-            e.getMessage();
-        }
+        //When
+        List<Company> companies = companyFacade.findByFragment("ofwardh");
+
+        //Then
+        Assert.assertEquals(0, companies.size());
 
         //CleanUp
         try {
@@ -77,12 +79,11 @@ public class CompanyFacadeTest {
         companyFacade.addCompany(dataMaesters);
         companyFacade.addCompany(greyMatter);
 
-        //When&Then
-        try {
-            Company company = companyFacade.findByFragment("at").get();
-        } catch (SearchingException e) {
-            e.getMessage();
-        }
+        //When
+        List<Company> companies = companyFacade.findByFragment("at");
+
+        //Then
+        Assert.assertEquals(2, companies.size());
 
         //CleanUp
         try {
@@ -106,10 +107,11 @@ public class CompanyFacadeTest {
         companyFacade.addEmployee(lindaKovalsky);
 
         //When
-        Employee employee = companyFacade.findByLastnameFragment("ith").get();
+        List<Employee> employees = companyFacade.findByLastnameFragment("ith");
 
         //Then
-        Assert.assertEquals("Smith", employee.getLastname());
+        Assert.assertEquals("Smith", employees.get(0).getLastname());
+        Assert.assertEquals(1, employees.size());
 
         //CleanUp
         try {
@@ -132,12 +134,11 @@ public class CompanyFacadeTest {
         companyFacade.addEmployee(stephanieClarckson);
         companyFacade.addEmployee(lindaKovalsky);
 
-        //When&Then
-        try {
-            Employee employee = companyFacade.findByLastnameFragment("ohngte").get();
-        } catch (SearchingException e) {
-            e.getMessage();
-        }
+        //When
+        List<Employee> employees = companyFacade.findByLastnameFragment("ohngte");
+
+        //Then
+        Assert.assertEquals(0, employees.size());
 
         //CleanUp
         try {
@@ -159,12 +160,11 @@ public class CompanyFacadeTest {
         companyFacade.addEmployee(stephanieClarckson);
         companyFacade.addEmployee(lindaKovalsky);
 
-        //When&Then
-        try {
-            Employee employee = companyFacade.findByLastnameFragment("h").get();
-        } catch (SearchingException e) {
-            e.getMessage();
-        }
+        //When
+        List<Employee> employees = companyFacade.findByLastnameFragment("o");
+
+        //Then
+        Assert.assertEquals(2, employees.size());
 
         //CleanUp
         try {

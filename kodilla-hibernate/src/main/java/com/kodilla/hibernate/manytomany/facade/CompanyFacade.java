@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CompanyFacade {
@@ -38,29 +38,23 @@ public class CompanyFacade {
         employeeDao.deleteById(id);
     }
 
-    public Optional<Company> findByFragment(String text) {
+    public List<Company> findByFragment(String text) {
         List<Company> companyList = companyDao.retrieveCompaniesWhereFragmentIs(text);
-        if(companyList.size() == 1) {
-            return Optional.ofNullable(companyList.get(0));
-        } else if(companyList.size() == 0) {
-            LOGGER.error("There is no company with this fragment");
-            throw new SearchingException("There is no company with this fragment");
+        if(companyList.size() >= 1) {
+            return companyList;
         } else {
-            LOGGER.error("There is more than one company with this fragment");
-            throw new SearchingException("There is more than one company with this fragment");
+            LOGGER.error("There is no company with this fragment");
+            return new ArrayList<>();
         }
     }
 
-    public Optional<Employee> findByLastnameFragment(String text) {
+    public List<Employee> findByLastnameFragment(String text) {
         List<Employee> employeeList = employeeDao.retrieveEmployeesWhereInLastnameIsFragment(text);
-        if(employeeList.size() == 1) {
-            return Optional.ofNullable(employeeList.get(0));
-        } else if(employeeList.size() == 0) {
-            LOGGER.error("There is no employee lastname with this fragment");
-            throw new SearchingException("There is no employee lastname with this fragment");
+        if(employeeList.size() >= 1) {
+            return employeeList;
         } else {
-            LOGGER.error("There is more than one employee lastname with this fragment");
-            throw new SearchingException("There is more than one employee lastname with this fragment");
+            LOGGER.error("There is no employee lastname with this fragment");
+            return new ArrayList<>();
         }
     }
 }
