@@ -12,9 +12,6 @@ import java.util.Set;
 public class MedianAdapter extends MedianAdaptee implements Classifier {
     @Override
     public int publicationYearMedian(Set<Book> bookSet) {
-        if(bookSet.isEmpty()) {
-            return 0;
-        }
         Map<BookSignature, BookB> books = new HashMap<>();
         bookSet.forEach(book -> books.put(new BookSignature(book.getSignature()), new BookB(book.getAuthor(), book.getAuthor(), book.getPublicationYear())));
         return medianPublicationYear(books);
